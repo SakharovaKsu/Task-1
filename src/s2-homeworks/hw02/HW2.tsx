@@ -28,22 +28,22 @@ const defaultAffairs: AffairType[] = [
 // pure helper functions
 export const filterAffairs = (affairs: AffairType[], filter: FilterType): AffairType[] => {
 
-    if(filter === 'all') {
-        return affairs
-    }
-
-    return affairs.filter((a) => a.priority === filter)
+    // if(filter === 'all') {
+    //     return affairs
+    // }
+    //
+    // return affairs.filter((a) => a.priority === filter)
 
     // длинная запись для понимания
-    // switch (filter) {
-    //     case 'high':
-    //         return affairs.filter(t => t.priority === 'high')
-    //     case 'middle':
-    //           return affairs.filter(t => t.priority === 'middle')
-    //     case 'low':
-    //         return affairs.filter(t => t.priority === 'low')
-    // }
-    // return affairs
+    switch (filter) {
+        case 'high':
+            return affairs.filter(t => t.priority === 'high')
+        case 'middle':
+              return affairs.filter(t => t.priority === 'middle')
+        case 'low':
+            return affairs.filter(t => t.priority === 'low')
+    }
+    return affairs
 }
 
 export const deleteAffair = (affairs: AffairType[], _id: number): AffairType[] => {
