@@ -2,11 +2,6 @@ import React, {useState} from 'react'
 import Affairs from './affairs/Affairs'
 import s2 from '../../s1-main/App.module.css'
 
-/*
-* 10 - в файле Affair.tsx дописать функции deleteCallback и использовать
-* 11 - в файле Affair.tsx отобразить приходящие данные
-* */
-
 // types
 export type AffairPriorityType = 'high'|'low'|'middle'
 export type AffairType = {
@@ -28,13 +23,6 @@ const defaultAffairs: AffairType[] = [
 // pure helper functions
 export const filterAffairs = (affairs: AffairType[], filter: FilterType): AffairType[] => {
 
-    // if(filter === 'all') {
-    //     return affairs
-    // }
-    //
-    // return affairs.filter((a) => a.priority === filter)
-
-    // длинная запись для понимания
     switch (filter) {
         case 'high':
             return affairs.filter(t => t.priority === 'high')
