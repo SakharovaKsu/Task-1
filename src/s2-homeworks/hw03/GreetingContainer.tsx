@@ -1,4 +1,4 @@
-import React, {ChangeEvent, KeyboardEvent, MouseEvent, useState} from 'react'
+import React, {ChangeEvent, KeyboardEvent, useState} from 'react'
 import Greeting from './Greeting'
 import { UserType } from './HW3'
 import {Simulate} from "react-dom/test-utils";
@@ -37,6 +37,7 @@ export const pureOnBlur = (
 export const pureOnEnter = (
     e: KeyboardEvent<HTMLInputElement>,
     addUser: () => void) => {
+
     if(e.key === 'Enter') addUser()
 }
 
@@ -49,8 +50,8 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({
     addUserCallback,
 }) => {
     // деструктуризация пропсов
-    const [name, setName] = useState<string>('') // need to fix any
-    const [error, setError] = useState<string>('') // need to fix any
+    const [name, setName] = useState<string>('')
+    const [error, setError] = useState<string>('')
 
     const setNameCallback = (e:ChangeEvent<HTMLInputElement>) => {
         setName(e.currentTarget.value)
@@ -69,7 +70,7 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({
     }
 
     const totalUsers = users.length // вычисляем количество добавленных
-    const lastUserName = users.length ? users[users.length - 1] : '' //  вычесляем имя последнего
+    const lastUserName = users[users.length - 1] ? users[users.length - 1].name : '' //  вычесляем имя последнего
 
     return (
         <Greeting

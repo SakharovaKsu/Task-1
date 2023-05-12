@@ -8,8 +8,8 @@ type GreetingPropsType = {
     onBlur: () => void
     onEnter: (e:KeyboardEvent<HTMLInputElement>) => void
     error: string
-    totalUsers: any // need to fix any
-    lastUserName?: any // need to fix any
+    totalUsers: number
+    lastUserName?: string
 }
 
 // презентационная компонента (для верстальщика)
@@ -25,7 +25,7 @@ const Greeting: React.FC<GreetingPropsType> = (
         lastUserName,
     } // деструктуризация пропсов
 ) => {
-    const inputClass = s.errorInput // need to fix with (?:)
+    const inputClass = error ? s.errorInput : s.input
 
     return (
         <div id={'hw3-form'} className={s.greetingForm}>
