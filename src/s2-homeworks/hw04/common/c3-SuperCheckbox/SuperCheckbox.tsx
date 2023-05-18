@@ -28,6 +28,7 @@ const SuperCheckbox: React.FC<SuperCheckboxPropsType> = (
 ) => {
     const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
         // если true, то checked (сокращенная тернарная запись)
+        onChange?.(e)
         onChangeChecked?.(e.currentTarget.checked)
     }
 
