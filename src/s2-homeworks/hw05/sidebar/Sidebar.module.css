@@ -8,15 +8,27 @@
 }
 
 .nav {
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
 }
 
 .nav a {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 27px;
+    color: #000000;
+    text-decoration: none;
 }
 
 .nav a:hover {
+    text-decoration-line: underline;
+    color: #0059B2;
 }
 
 .nav a.active {
+    color: #58ACFF;
+    text-decoration: none;
 }
 .close {
 }
