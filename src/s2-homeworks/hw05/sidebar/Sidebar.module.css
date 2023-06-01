@@ -1,16 +1,31 @@
 .sidebar {
+    display: none;
+    position: relative;
 }
 
 .sidebar.open {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 317px;
+    height: 100vh;
+    background-color: #ffffff;
 }
 
 .background {
+    width: 100vw;
+    height: 100vh;
+    background: #000000;
+    opacity: 0.3;
 }
 
 .nav {
     display: flex;
     flex-direction: column;
     gap: 45px;
+    padding-top: 30px;
+    padding-left: 70px;
 }
 
 .nav a {
@@ -31,7 +46,16 @@
     text-decoration: none;
 }
 .close {
+    display: block;
+    margin-left: auto;
+    margin-right: 30px;
+    background-color: transparent;
+    border: none;
+    padding: 6px;
+    margin-top: 22px;
 }
 
 .close img {
+    width: 100%;
+    height: auto;
 }

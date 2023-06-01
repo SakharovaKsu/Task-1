@@ -2,7 +2,15 @@
 }
 
 .header {
+    display: flex;
+    justify-content: space-between;
+    padding: 26px 70px;
+    box-shadow: 0 0 40px rgba(29, 33, 38, 0.13), 0 0 2px rgba(29, 33, 38, 0.1);
+    margin-bottom: 47px;
 }
 
 .header h1 {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
 }

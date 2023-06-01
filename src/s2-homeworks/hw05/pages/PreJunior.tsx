@@ -3,10 +3,11 @@ import HW1 from '../../hw01/HW1'
 import HW2 from '../../hw02/HW2'
 import HW3 from '../../hw03/HW3'
 import HW4 from '../../hw04/HW4'
+import s from './Pages.module.css'
 
 function PreJunior() {
     return (
-        <div id={'hw5-page-pre-junior'}>
+        <div className={s.box} id={'hw5-page-pre-junior'}>
             {/*pre junior page*/}
             <HW1 />
             <HW2 />
