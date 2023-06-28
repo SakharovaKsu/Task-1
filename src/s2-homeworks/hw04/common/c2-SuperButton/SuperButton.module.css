@@ -39,7 +39,8 @@
 }
 
 .secondary:hover {
-    background: #E5F0FA;
+    background: #0066CC;
+    color: #FFFFFF;
 }
 
 .default:active {
