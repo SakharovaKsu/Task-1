@@ -59,7 +59,7 @@ function Clock() {
     const seconds = date.getSeconds().toString().padStart(2, '0')
     const weekday = date.toLocaleString('en-US', { weekday: 'long' })
 
-    const stringTime = `${hours}.${minutes}.${seconds}` || <br/>
+    const stringTime = `${hours}:${minutes}:${seconds}` || <br/>
     // часы24:минуты:секунды (01:02:03)/(23:02:03)/(24:00:00)/(00:00:01)
 
     const stringDate = `${day}.${month}.${year}` || <br/>
