@@ -2,6 +2,8 @@
 }
 
 .clock {
+    margin: 0 200px;
+    max-width: 600px;
 }
 
 .watch {
