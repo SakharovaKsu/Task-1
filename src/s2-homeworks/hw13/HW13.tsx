@@ -20,6 +20,14 @@ const HW13 = () => {
     const [info, setInfo] = useState('')
     const [image, setImage] = useState('')
 
+    const text200 = '...всё ок)\n' +
+        'код 200 - обычно означает что скорее всего всё ок)'
+    const textError500 = 'эмитация ошибки на сервере\n' +
+        'ошибка 500 - обычно означает что что-то сломалось на сервере, например база данных)'
+    const textError400 = 'Ты не отправил success в body вообще! ошибка 400 - обычно означает что скорее всего фронт отправил что-то не то на бэк!'
+    const textError = 'Network Error\n' +
+        'AxiosError'
+
     const send = (x?: boolean | null) => () => {
         const url =
             x === null
@@ -36,12 +44,26 @@ const HW13 = () => {
             .then((res) => {
                 setCode('Код 200!')
                 setImage(success200)
-                // дописать
-
+                setText(text200)
+                setInfo('')
             })
             .catch((e) => {
-                // дописать
-
+                if(e.response.status === 400) {
+                    setCode('Ошибка 400!')
+                    setImage(error400)
+                    setText(textError400)
+                    setInfo('')
+                } else if(e.response.status === 500) {
+                    setCode('Ошибка 500!')
+                    setImage(error500)
+                    setText(textError500)
+                    setInfo('')
+                } else {
+                    setCode('Error!')
+                    setImage(errorUnknown)
+                    setText(textError)
+                    setInfo('')
+                }
             })
     }
 
@@ -50,46 +72,43 @@ const HW13 = () => {
             <div className={s2.hwTitle}>Homework #13</div>
 
             <div className={s2.hw}>
-                <div className={s.buttonsContainer}>
-                    <SuperButton
-                        id={'hw13-send-true'}
-                        onClick={send(true)}
-                        xType={'secondary'}
-                        // дописать
+                <div className={s.hwContainer}>
+                    <div className={s.buttonsContainer}>
+                        <SuperButton
+                            id={'hw13-send-true'}
+                            onClick={send(true)}
+                            xType={'secondary'}
+                            disabled={info === '...loading'}
+                        >
+                            Send true
+                        </SuperButton>
+                        <SuperButton
+                            id={'hw13-send-false'}
+                            onClick={send(false)}
+                            xType={'secondary'}
+                            disabled={info === '...loading'}
+                        >
+                            Send false
+                        </SuperButton>
+                        <SuperButton
+                            id={'hw13-send-undefined'}
+                            onClick={send(undefined)}
+                            xType={'secondary'}
+                            disabled={info === '...loading'}
+                        >
+                            Send undefined
+                        </SuperButton>
+                        <SuperButton
+                            id={'hw13-send-null'}
+                            onClick={send(null)} // имитация запроса на не корректный адрес
+                            xType={'secondary'}
+                            disabled={info === '...loading'}
+                        >
+                            Send null
+                        </SuperButton>
+                    </div>
 
-                    >
-                        Send true
-                    </SuperButton>
-                    <SuperButton
-                        id={'hw13-send-false'}
-                        onClick={send(false)}
-                        xType={'secondary'}
-                        // дописать
-
-                    >
-                        Send false
-                    </SuperButton>
-                    <SuperButton
-                        id={'hw13-send-undefined'}
-                        onClick={send(undefined)}
-                        xType={'secondary'}
-                        // дописать
-
-                    >
-                        Send undefined
-                    </SuperButton>
-                    <SuperButton
-                        id={'hw13-send-null'}
-                        onClick={send(null)} // имитация запроса на не корректный адрес
-                        xType={'secondary'}
-                        // дописать
-
-                    >
-                        Send null
-                    </SuperButton>
-                </div>
-
-                <div className={s.responseContainer}>
+                    <div className={s.responseContainer}>
                     <div className={s.imageContainer}>
                         {image && <img src={image} className={s.image} alt="status"/>}
                     </div>
@@ -105,6 +124,7 @@ const HW13 = () => {
                             {info}
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
         </div>

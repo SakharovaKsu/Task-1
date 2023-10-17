@@ -1,7 +1,19 @@
+.hwContainer {
+    margin: 0 200px;
+}
+
 .buttonsContainer {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 55px;
 }
 
 .responseContainer {
+    display: flex;
+    column-gap: 50px;
+    align-items: center;
+    justify-content: center;
 }
 
 .imageContainer {
@@ -14,6 +26,8 @@
 }
 
 .code {
+    font-size: 30px;
+    padding-bottom: 14px;
 }
 
 .text {
