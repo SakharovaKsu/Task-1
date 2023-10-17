@@ -20,13 +20,6 @@ const HW13 = () => {
     const [info, setInfo] = useState('')
     const [image, setImage] = useState('')
 
-    const text200 = '...всё ок)\n' +
-        'код 200 - обычно означает что скорее всего всё ок)'
-    const textError500 = 'эмитация ошибки на сервере\n' +
-        'ошибка 500 - обычно означает что что-то сломалось на сервере, например база данных)'
-    const textError400 = 'Ты не отправил success в body вообще! ошибка 400 - обычно означает что скорее всего фронт отправил что-то не то на бэк!'
-    const textError = 'Network Error\n' +
-        'AxiosError'
 
     const send = (x?: boolean | null) => () => {
         const url =
@@ -44,27 +37,28 @@ const HW13 = () => {
             .then((res) => {
                 setCode('Код 200!')
                 setImage(success200)
-                setText(text200)
-                setInfo('')
+                setText(res.data.errorText)
+                setInfo(res.data.info)
             })
             .catch((e) => {
-                if(e.response.status === 400) {
-                    setCode('Ошибка 400!')
-                    setImage(error400)
-                    setText(textError400)
-                    setInfo('')
-                } else if(e.response.status === 500) {
-                    setCode('Ошибка 500!')
-                    setImage(error500)
-                    setText(textError500)
-                    setInfo('')
+                if (e.response.data) {
+                    setText(e.response.data.errorText)
+                    setInfo(e.response.data.info)
+                    if (e.response.status === 400) {
+                        setCode('Ошибка 400!')
+                        setImage(error400)
+                    } else if (e.response.status === 500) {
+                        setCode('Ошибка 500!')
+                        setImage(error500)
+                    }
                 } else {
                     setCode('Error!')
+                    setText(e.message)
+                    setInfo('AxiosError')
                     setImage(errorUnknown)
-                    setText(textError)
-                    setInfo('')
                 }
             })
+
     }
 
     return (
