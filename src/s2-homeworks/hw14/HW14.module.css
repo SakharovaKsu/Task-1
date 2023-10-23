@@ -1,7 +1,15 @@
-.tech {
+.container {
+    margin: 0 200px;
+    max-width: 360px;
+}
 
+.tech {
+    padding-bottom: 5px;
 }
 
 .loading {
-
+    color: #4D4D4D;
+    padding-top: 14px;
+    font-size: 14px;
+    text-align: right;
 }
