@@ -5,14 +5,7 @@ import axios from 'axios'
 import SuperPagination from './common/c9-SuperPagination/SuperPagination'
 import {useSearchParams} from 'react-router-dom'
 import SuperSort from './common/c10-SuperSort/SuperSort'
-
-/*
-* 1 - дописать SuperPagination
-* 2 - дописать SuperSort
-* 3 - проверить pureChange тестами
-* 3 - дописать sendQuery, onChangePagination, onChangeSort в HW15
-* 4 - сделать стили в соответствии с дизайном
-* */
+import Loading from './../../img/Loading.png'
 
 type TechType = {
     id: number
@@ -73,19 +66,19 @@ const HW15 = () => {
         setSearchParams({ sort: newSort, page: String(1), count: count.toString() });
     }
 
-    // useEffect(() => {
-    //     const params = Object.fromEntries(searchParams)
-    //     sendQuery({page: params.page, count: params.count})
-    //     setPage(+params.page || 1)
-    //     setCount(+params.count || 4)
-    // }, [])
-
     useEffect(() => {
-        const params = Object.fromEntries(searchParams);
-        setPage(+params.page || 1);
-        setCount(+params.count || 4);
-        sendQuery({ sort: params.sort || '', page: +params.page || 1, count: +params.count || 4 });
-    }, []);
+        const params = Object.fromEntries(searchParams)
+        sendQuery({page: params.page, count: params.count})
+        setPage(+params.page || 1)
+        setCount(+params.count || 4)
+    }, [])
+
+    // useEffect(() => {
+    //     const params = Object.fromEntries(searchParams);
+    //     setPage(+params.page || 1);
+    //     setCount(+params.count || 4);
+    //     sendQuery({ sort: params.sort || '', page: +params.page || 1, count: +params.count || 4 });
+    // }, []);
 
     const mappedTechs = techs.map(t => (
         <div key={t.id} className={s.row}>
@@ -104,28 +97,30 @@ const HW15 = () => {
             <div className={s2.hwTitle}>Homework #15</div>
 
             <div className={s2.hw}>
-                {idLoading && <div id={'hw15-loading'} className={s.loading}>Loading...</div>}
+                <div className={s.container}>
+                    {idLoading && <div id={'hw15-loading'} className={s.loading}><img className={s.loadingImg} src={Loading}/></div>}
 
-                <SuperPagination
-                    page={page}
-                    itemsCountForPage={count}
-                    totalCount={totalCount}
-                    onChange={onChangePagination}
-                />
+                    <SuperPagination
+                        page={page}
+                        itemsCountForPage={count}
+                        totalCount={totalCount}
+                        onChange={onChangePagination}
+                    />
 
-                <div className={s.rowHeader}>
-                    <div className={s.techHeader}>
-                        tech
-                        <SuperSort sort={sort} value={'tech'} onChange={onChangeSort}/>
+                    <div className={s.rowHeader}>
+                        <div className={s.techHeader}>
+                            tech
+                            <SuperSort sort={sort} value={'tech'} onChange={onChangeSort}/>
+                        </div>
+
+                        <div className={s.developerHeader}>
+                            developer
+                            <SuperSort sort={sort} value={'developer'} onChange={onChangeSort}/>
+                        </div>
                     </div>
 
-                    <div className={s.developerHeader}>
-                        developer
-                        <SuperSort sort={sort} value={'developer'} onChange={onChangeSort}/>
-                    </div>
+                    {mappedTechs}
                 </div>
-
-                {mappedTechs}
             </div>
         </div>
     )
