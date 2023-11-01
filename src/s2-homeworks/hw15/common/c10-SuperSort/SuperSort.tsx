@@ -1,11 +1,11 @@
 import React from 'react'
-import up from './../../../../img/up.svg'
-import down from './../../../../img/down.svg'
+import up from './../../../../img/up.png'
+import down from './../../../../img/down.png'
+import arrows from './../../../../img/arrows.png'
 
-// добавить в проект иконки и импортировать
 const downIcon = down
 const upIcon = up
-const noneIcon = '[--]'
+const noneIcon = arrows
 
 export type SuperSortPropsType = {
     id?: string
