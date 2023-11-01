@@ -73,13 +73,6 @@ const HW15 = () => {
         setCount(+params.count || 4)
     }, [])
 
-    // useEffect(() => {
-    //     const params = Object.fromEntries(searchParams);
-    //     setPage(+params.page || 1);
-    //     setCount(+params.count || 4);
-    //     sendQuery({ sort: params.sort || '', page: +params.page || 1, count: +params.count || 4 });
-    // }, []);
-
     const mappedTechs = techs.map(t => (
         <div key={t.id} className={s.row}>
             <div id={'hw15-tech-' + t.id} className={s.tech}>
