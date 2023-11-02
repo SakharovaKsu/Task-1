@@ -20,7 +20,7 @@ const SuperPagination: React.FC<SuperPaginationPropsType> = (
 
     const onChangeCallback = (event: ChangeEvent<unknown>, page: number) => {
         // Вызываем колбэк onChange, передавая новые значения страницы и количества элементов на странице
-        onChange(page, event.eventPhase)
+        onChange(page, itemsCountForPage)
     }
 
     const onChangeSelect = (event: ChangeEvent<HTMLSelectElement>) => {
